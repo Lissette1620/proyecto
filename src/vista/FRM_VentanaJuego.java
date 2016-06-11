@@ -15,6 +15,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import static java.lang.System.exit;
 import java.util.ArrayList;
 import javax.sound.sampled.Clip;
 import javax.swing.Icon;
@@ -44,7 +45,9 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
     FRM_GameOver frm_GameOver;
     FRM_Winner frm_Winner;
     JLabel label[];
-    Cronometro cronometro;
+    int cronometro=0;
+    int segundo=0;
+    public String modo;
     //MouseListener mouseListener = new MouseAdapter() {};
     Image im = Toolkit.getDefaultToolkit().createImage("src/img/mira2.png"); 
     Cursor cur = Toolkit.getDefaultToolkit().createCustomCursor(im, new Point(20,20),"WILL"); 
@@ -62,8 +65,8 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         iconoCuatro=new ImageIcon(getClass().getResource("../img/conejo_07.png"));
         frm_GameOver=new FRM_GameOver();
         frm_Winner =new FRM_Winner();
-       // cronometro = new Cronometro(jl_Time);
         direccion="Derecha";
+        modo="Comienzo";
         setCursor(cur); 
         hilo=new Hilo(this);
         hilo.start();
@@ -137,6 +140,7 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         if(balasDisponibles<=0)
         {
             frm_GameOver.setVisible(true);
+           
             
         }
     }
@@ -144,7 +148,8 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
     {
         
         frm_Winner.setVisible(true);
-        setVisible(false);
+        
+        
     }
     public void balasOcultar(int balaDisp)
     {
@@ -172,22 +177,38 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         }
        
     }
+    public void setCronometro(boolean comenzar){
+       if(comenzar)
+       {
+           segundo+=1;
+        if(segundo%5==0){
+            cronometro+=1;
+            this.a.setText(""+cronometro);
+            a.setEnabled(false);
+       }
+        
+    }
+  }
+
+
     public void impactoBala(boolean impactado)
     {
+        
         if(impactado)
         {
             impactado=true;
-            frm_Winner.setVisible(true);
-            
-           // JOptionPane.showMessageDialog(null,"Impactado Correcto");
+            winner();
+            modo="Repetir";
+                
         }
         else
         {
             impactado=false;
             balasFallidas();
             gameOver();
+            modo="Repetir";
        
-            // JOptionPane.showMessageDialog(null,"Impactado Incorrecto"); 
+            
         }
     }
     
@@ -221,9 +242,10 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         jl_Bala4 = new javax.swing.JLabel();
         jl_Bala5 = new javax.swing.JLabel();
         jl_Time = new javax.swing.JLabel();
-        a = new javax.swing.JProgressBar();
+        a = new javax.swing.JTextField();
         jl_FondoFinal = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jl_Conejo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/conejo_0.png"))); // NOI18N
@@ -334,8 +356,9 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         jl_Time.setText("Time");
         getContentPane().add(jl_Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 80, -1));
 
-        a.setStringPainted(true);
-        getContentPane().add(a, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 90, 30));
+        a.setBackground(new java.awt.Color(87, 179, 16));
+        a.setFont(new java.awt.Font("FreeSans", 2, 18)); // NOI18N
+        getContentPane().add(a, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 50, -1));
 
         jl_FondoFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondoFinal.png"))); // NOI18N
         jl_FondoFinal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -343,7 +366,7 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
                 jl_FondoFinalMousePressed(evt);
             }
         });
-        getContentPane().add(jl_FondoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -80, 1560, 900));
+        getContentPane().add(jl_FondoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -90, 1560, 900));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -424,7 +447,7 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JProgressBar a;
+    private javax.swing.JTextField a;
     private javax.swing.JLabel jl_Bala1;
     private javax.swing.JLabel jl_Bala2;
     private javax.swing.JLabel jl_Bala3;

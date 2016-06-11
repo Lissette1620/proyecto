@@ -34,13 +34,9 @@ public class Hilo extends Thread {
            {
                //1000 es un segundo
              sleep(100);//tiempo en el que mando a dormir el hilo
-             //ventana.moverFondo();
              ventana.moverConejos();
+             ventana.setCronometro(false);
              
-            // ventana.dispararConejos(mouse);
-             //ventana.comprobarColision();
-             //ventana.cambiarIcon();
-             //comprobarPersonaje();
            }
            catch(Exception e)
            {
@@ -48,5 +44,6 @@ public class Hilo extends Thread {
            }
        }
     }
+   
  
 }
