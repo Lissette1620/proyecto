@@ -27,19 +27,22 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
     FRM_Usuario usuario;
     Metodos_XML_Usuarios xml;
     Icon iconoBlanco;
+    FRM_Mensaje mensaje;
     public FRM_VentanaPrincipal() {
         initComponents();
-        ventana=new FRM_VentanaJuego();
         usuario=new FRM_Usuario(); 
         xml=new Metodos_XML_Usuarios(usuario);
+        mensaje=new FRM_Mensaje();
        iconoBlanco=new ImageIcon(getClass().getResource("../img/conejito10.png"));
    
     }
+    
      public void limpiar()
      {
          this.jt_Usuario.setText("");
          this.jt_Contrasena.setText("");
      }
+     
      public void iniciarSesion()
      {
          String id=""+this.jt_Usuario.getText();
@@ -47,12 +50,12 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
         if(xml.consultarInformacionDelXml(id) && xml.consultarInformacionDelXmlC(contrasena))
         {
            
+            ventana=new FRM_VentanaJuego();
             ventana.setVisible(true);
-            JOptionPane.showMessageDialog(null,"El objetivo de este juego"
-                  + " consiste en matar al conejito de la galleta,"
-                  + "al jugador se le daran 5 tiros. "
-                  + "De no conseguirse el objetivo la partida estará perdida ","Juego",JOptionPane.PLAIN_MESSAGE,iconoBlanco);
-            //ventana.audio.play();
+            ventana.audio.play();
+            mensaje.setVisible(true);
+            
+            ventana.setCronometro(true);
           
         }
         else
