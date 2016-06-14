@@ -26,6 +26,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import vista.FRM_Usuario;
+import vista.FRM_VentanaJuego;
 import vista.FRM_VentanaPrincipal;
 
 
@@ -35,6 +36,7 @@ import vista.FRM_VentanaPrincipal;
  */
 public class Metodos_XML_Usuarios {
     FRM_Usuario ventana;
+    FRM_VentanaJuego juego;
     DocumentBuilderFactory factory;
     DocumentBuilder builder;
     DOMImplementation implementation;
@@ -125,7 +127,7 @@ public void crearXML() //Método nuevo en pruebas
             Element valor2 = document.createElement("contrasena");
             Text text2 = document.createTextNode(arregloInformacion[1]);
             Element valor3=document.createElement("cronometro");
-            Text text3=document.createTextNode(arregloInformacion[2]);
+            Text text3=document.createTextNode(arregloInformacion[juego.guardarTiempo()]);
            
             raiz.appendChild(valor1);
             valor1.appendChild(text);

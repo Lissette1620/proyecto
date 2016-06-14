@@ -28,11 +28,13 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
     Metodos_XML_Usuarios xml;
     Icon iconoBlanco;
     FRM_Mensaje mensaje;
+    FRM_Puntajes  ventanaPuntaje;
     public FRM_VentanaPrincipal() {
         initComponents();
         usuario=new FRM_Usuario(); 
         xml=new Metodos_XML_Usuarios(usuario);
         mensaje=new FRM_Mensaje();
+        ventanaPuntaje=new FRM_Puntajes();
        iconoBlanco=new ImageIcon(getClass().getResource("../img/conejito10.png"));
    
     }
@@ -92,6 +94,8 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setTitle("LISSETTE GAME");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -162,6 +166,23 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Puntajes");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem3.setText("Puntajes");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -192,6 +213,16 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         mensaje.setVisible(true);
     }//GEN-LAST:event_btn_MensajeActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        ventanaPuntaje.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,9 +264,11 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btn_Mensaje;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JLabel jl_Contrasena;
     private javax.swing.JLabel jl_Fondo;
     private javax.swing.JLabel jl_Titulo;

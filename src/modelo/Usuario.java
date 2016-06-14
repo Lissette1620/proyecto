@@ -56,6 +56,10 @@ public class Usuario {
     {
         return cronometro;
     }
+    public String getInformacion()
+    {
+        return "Nombre "+nombre+" Cronometro"+cronometro;
+    }
     
     
 }

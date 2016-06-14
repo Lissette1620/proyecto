@@ -187,9 +187,9 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         
     }
   }
-    public void guardarTiempo()
+    public int guardarTiempo()
     {
-        this.a.getText();
+        return Integer.parseInt(a.getText());
     }
     
 
@@ -201,16 +201,18 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         {
             impactado=true;
             winner();
-            hilo.suspend();
             modo="Repetir";
+            hilo.suspend();
+            hilo.start();
         }
         else
         {
             impactado=false;
             balasFallidas();
             gameOver();
-            hilo.suspend();
             modo="Repetir";
+            hilo.suspend();
+            hilo.start();
        
             
         }

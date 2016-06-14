@@ -20,14 +20,14 @@ import vista.FRM_VentanaPrincipal;
 
 public class Hilo extends Thread {
   FRM_VentanaJuego  ventana;  
-  FRM_Mensaje mensaje;
   
-  int tiempo = 0;
+  
+ 
   
     public Hilo(FRM_VentanaJuego ventana)
     {
         this.ventana=ventana;
-        mensaje=new FRM_Mensaje();
+        
         
     }
     public void run()
