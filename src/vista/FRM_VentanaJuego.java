@@ -178,24 +178,18 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
        
     }
     public void setCronometro(){
-      if(cron()) {
+      
          segundo+=1;
       if(segundo%8==0){
       cronometro+=1;
       this.a.setText(""+cronometro);
       a.setEnabled(false); 
-      }
-      
-        
         
     }
   }
-    public boolean cron(){
-        boolean t = false;
-        if(!mensaje.isVisible()){
-            t = true;
-        }
-        return t;
+    public void guardarTiempo()
+    {
+        this.a.getText();
     }
     
 
@@ -207,14 +201,15 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         {
             impactado=true;
             winner();
+            hilo.suspend();
             modo="Repetir";
-                
         }
         else
         {
             impactado=false;
             balasFallidas();
             gameOver();
+            hilo.suspend();
             modo="Repetir";
        
             

@@ -21,6 +21,9 @@ import vista.FRM_VentanaPrincipal;
 public class Hilo extends Thread {
   FRM_VentanaJuego  ventana;  
   FRM_Mensaje mensaje;
+  
+  int tiempo = 0;
+  
     public Hilo(FRM_VentanaJuego ventana)
     {
         this.ventana=ventana;
@@ -37,7 +40,7 @@ public class Hilo extends Thread {
              sleep(100);//tiempo en el que mando a dormir el hilo
              ventana.moverConejos();
              ventana.setCronometro();
-             
+
            }
            catch(Exception e)
            {
