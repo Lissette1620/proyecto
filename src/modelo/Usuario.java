@@ -13,10 +13,12 @@ package modelo;
 public class Usuario {
     private String nombre;
     private String contrasena;
+    private int cronometro;
 
-    public Usuario(String nombre, String contrasena) {
+    public Usuario(String nombre, String contrasena,int cronometro) {
         this.nombre = nombre;
         this.contrasena = contrasena;
+        this.cronometro=cronometro;
     }
 
     /**
@@ -45,6 +47,14 @@ public class Usuario {
      */
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+    public void setCronometro(int cronometro)
+    {
+        this.cronometro=cronometro;
+    }
+    public int getCronometro()
+    {
+        return cronometro;
     }
     
     

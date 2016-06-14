@@ -23,7 +23,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import modelo.Cronometro;
 import modelo.Hilo;
 
 /**
@@ -43,16 +42,16 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
     int balasDisponibles=5;
     ArrayList arrayBala;
     FRM_GameOver frm_GameOver;
+    FRM_Mensaje mensaje;
     FRM_Winner frm_Winner;
     JLabel label[];
     int cronometro=0;
     int segundo=0;
     public String modo;
-    //MouseListener mouseListener = new MouseAdapter() {};
     Image im = Toolkit.getDefaultToolkit().createImage("src/img/mira2.png"); 
-    Cursor cur = Toolkit.getDefaultToolkit().createCustomCursor(im, new Point(20,20),"WILL"); 
-    
+    Cursor cur = Toolkit.getDefaultToolkit().createCustomCursor(im, new Point(20,20),"WILL");   
     String direccion;
+    
     
     public FRM_VentanaJuego() {
         initComponents();
@@ -65,6 +64,7 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         iconoCuatro=new ImageIcon(getClass().getResource("../img/conejo_07.png"));
         frm_GameOver=new FRM_GameOver();
         frm_Winner =new FRM_Winner();
+        mensaje=new FRM_Mensaje();
         direccion="Derecha";
         modo="Comienzo";
         setCursor(cur); 
@@ -177,18 +177,27 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         }
        
     }
-    public void setCronometro(boolean comenzar){
-       if(comenzar)
-       {
-           segundo+=1;
-        if(segundo%5==0){
-            cronometro+=1;
-            this.a.setText(""+cronometro);
-            a.setEnabled(false);
-       }
+    public void setCronometro(){
+      if(cron()) {
+         segundo+=1;
+      if(segundo%8==0){
+      cronometro+=1;
+      this.a.setText(""+cronometro);
+      a.setEnabled(false); 
+      }
+      
+        
         
     }
   }
+    public boolean cron(){
+        boolean t = false;
+        if(!mensaje.isVisible()){
+            t = true;
+        }
+        return t;
+    }
+    
 
 
     public void impactoBala(boolean impactado)

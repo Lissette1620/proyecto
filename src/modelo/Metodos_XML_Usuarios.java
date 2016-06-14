@@ -65,7 +65,7 @@ public Metodos_XML_Usuarios(FRM_Usuario ventana)
             ventana.mostrarMensaje("No existía un archivo XML creado, ya fue creado y puede proceder a utilizarlo");
         }
         
-        arregloInformacion=new String[5];
+        arregloInformacion=new String[3];
         titulos = new ArrayList();
         valores = new ArrayList();
 }
@@ -124,12 +124,15 @@ public void crearXML() //Método nuevo en pruebas
             Text text = document.createTextNode(arregloInformacion[0]);
             Element valor2 = document.createElement("contrasena");
             Text text2 = document.createTextNode(arregloInformacion[1]);
+            Element valor3=document.createElement("cronometro");
+            Text text3=document.createTextNode(arregloInformacion[2]);
            
             raiz.appendChild(valor1);
             valor1.appendChild(text);
             raiz.appendChild(valor2);
             valor2.appendChild(text2);
-            
+            raiz.appendChild(valor3);
+            valor3.appendChild(text3);
             
             source = new DOMSource(document);
             result = new StreamResult(new java.io.File(nombreArchivo+".xml"));
@@ -187,7 +190,7 @@ public void crearXML() //Método nuevo en pruebas
                  {
                     itemEncontrado=true;     
                  }
-                 if(itemEncontrado && contador<2)
+                 if(itemEncontrado && contador<3)
                  {
                     arregloInformacion[contador]=datoContenido.getNodeValue();
                     contador++;
@@ -219,7 +222,7 @@ public void crearXML() //Método nuevo en pruebas
                  {
                     itemEncontrado=true;     
                  }
-                 if(itemEncontrado && contador<2)
+                 if(itemEncontrado && contador<3)
                  {
                     arregloInformacion[contador]=datoContenido.getNodeValue();
                     contador++;

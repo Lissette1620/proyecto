@@ -53,14 +53,11 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
             ventana=new FRM_VentanaJuego();
             ventana.setVisible(true);
             ventana.audio.play();
-            mensaje.setVisible(true);
             
-            ventana.setCronometro(true);
-          
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"No se ha agregado un ID procesa a Ingresar");
+            JOptionPane.showMessageDialog(null,"No se ha agregado un ID proceda a Ingresar");
             
         }
          
@@ -88,6 +85,7 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
         jt_Usuario = new javax.swing.JTextField();
         jl_Contrasena = new javax.swing.JLabel();
         jt_Contrasena = new javax.swing.JPasswordField();
+        btn_Mensaje = new javax.swing.JButton();
         jl_Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -98,7 +96,7 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
         setTitle("LISSETTE GAME");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_Jugar.setFont(new java.awt.Font("URW Chancery L", 1, 36)); // NOI18N
+        btn_Jugar.setFont(new java.awt.Font("Laksaman", 1, 18)); // NOI18N
         btn_Jugar.setForeground(java.awt.Color.black);
         btn_Jugar.setText("Inicio");
         btn_Jugar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +104,7 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
                 btn_JugarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 580, 140, 40));
+        getContentPane().add(btn_Jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 110, 50));
 
         jl_Titulo.setFont(new java.awt.Font("Arial Black", 3, 24)); // NOI18N
         jl_Titulo.setForeground(new java.awt.Color(124, 219, 35));
@@ -124,6 +122,16 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
         jl_Contrasena.setText("Password:");
         getContentPane().add(jl_Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 190, 30));
         getContentPane().add(jt_Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 520, 190, -1));
+
+        btn_Mensaje.setFont(new java.awt.Font("Laksaman", 1, 18)); // NOI18N
+        btn_Mensaje.setForeground(new java.awt.Color(1, 1, 1));
+        btn_Mensaje.setText("Instrucciones");
+        btn_Mensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MensajeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_Mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, -1));
 
         jl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/conejoZombie.jpg"))); // NOI18N
         getContentPane().add(jl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 640));
@@ -180,6 +188,11 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void btn_MensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MensajeActionPerformed
+        // TODO add your handling code here:
+        mensaje.setVisible(true);
+    }//GEN-LAST:event_btn_MensajeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -217,6 +230,7 @@ public class FRM_VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Jugar;
+    private javax.swing.JButton btn_Mensaje;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

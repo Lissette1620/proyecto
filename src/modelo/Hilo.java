@@ -14,16 +14,17 @@ package modelo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import static java.lang.Thread.sleep;
+import vista.FRM_Mensaje;
 import vista.FRM_VentanaJuego;
 import vista.FRM_VentanaPrincipal;
 
 public class Hilo extends Thread {
   FRM_VentanaJuego  ventana;  
-
+  FRM_Mensaje mensaje;
     public Hilo(FRM_VentanaJuego ventana)
     {
         this.ventana=ventana;
-       
+        mensaje=new FRM_Mensaje();
         
     }
     public void run()
@@ -35,7 +36,7 @@ public class Hilo extends Thread {
                //1000 es un segundo
              sleep(100);//tiempo en el que mando a dormir el hilo
              ventana.moverConejos();
-             ventana.setCronometro(false);
+             ventana.setCronometro();
              
            }
            catch(Exception e)
@@ -44,6 +45,6 @@ public class Hilo extends Thread {
            }
        }
     }
-   
+ 
  
 }

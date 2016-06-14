@@ -12,12 +12,14 @@ package vista;
  */
 public class FRM_Mensaje extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FRM_Mensahe
-     */
+    //Referencias
+    FRM_VentanaJuego fRM_VentanaJuego;
     public FRM_Mensaje() {
         initComponents();
+       
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +33,12 @@ public class FRM_Mensaje extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                formComponentHidden(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
@@ -64,6 +72,11 @@ public class FRM_Mensaje extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+        // TODO add your handling code here:
+        //this.fRM_VentanaJuego.setCronometro();
+    }//GEN-LAST:event_formComponentHidden
 
     /**
      * @param args the command line arguments
